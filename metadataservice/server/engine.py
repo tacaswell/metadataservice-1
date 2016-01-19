@@ -272,7 +272,7 @@ class EventHandler(DefaultHandler):
     def get(self):
         database = self.settings['db']
         query = utils.unpack_params(self)
-        docs = database['event'].find(query)
+        docs = database['event'].find(query, sort=[('time', 1)])
         if not docs:
             raise tornado.web.HTTPError(500,
                                         status_code='No results for given query' + str(query))
