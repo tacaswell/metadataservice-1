@@ -282,7 +282,7 @@ class EventHandler(DefaultHandler):
             while True:
                 try:
                     del(d['_id'])
-                    self.write(ujson.dumps(d))
+                    self.write(ujson.dumps(d, double_precision=18))
                     d = next(docs)
                     self.write(',')
                 except StopIteration:
